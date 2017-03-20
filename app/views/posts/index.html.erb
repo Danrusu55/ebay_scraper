@@ -1,0 +1,40 @@
+<div class="container">
+
+  <%= render 'filter' %>
+
+  <% if @posts.empty? %>
+    <hr>
+    <h3>No Posts Found</h3>
+  <% else %>
+    <table class="table table-hover table-condensed table-responsive table.sortable">
+      <thead>
+        <tr>
+          <th>Heading</th>
+          <th>Price</th>
+          <th>City</th>
+          <th>Last Updated</th>
+          <th>Listing type</th>
+          <th>Address</th>
+          <th>Source account</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @posts.each do |post| %>
+          <tr>
+            <td><%= link_to post.heading, post %></td>
+            <td><%= number_to_currency(post.price, precision: 0) %></td>
+            <td><%= post.city %></td>
+            <td><%= " #{time_ago_in_words(Time.at(post.timestamp.to_i))} ago" %></td>
+            <td><%= post.listingtype %></td>
+            <td><%= post.address %></td>
+            <td><%= post.source_account %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+    <%= will_paginate @posts, renderer: BootstrapPagination::Rails  %>
+  <% end %>
+</div>

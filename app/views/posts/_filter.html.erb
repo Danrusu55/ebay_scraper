@@ -1,0 +1,45 @@
+<div class="filter">
+  <%= form_tag posts_path, method: :get, class: "form-inline" do %>
+
+    <div class="row">
+      <div class="col-md-4">
+        <%= label_tag "Enter price:" %>
+      </div>
+      <div class="col-md-2">
+        <%= label_tag :city %>
+      </div>
+      <div class="col-md-2">
+        <%= label_tag :address %>
+      </div>
+      <div class="col-md-2">
+        <%= label_tag "Source dparis14d?" %>
+        <%= check_box_tag :source_account, "dparis14d", params[:source_account] %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-4">
+        <%= text_field_tag :min_price, params[:min_price], placeholder: "minimum", class: "form-control input-sm" %>>
+        <%= text_field_tag :max_price, params[:max_price], placeholder: "maximum", class: "form-control input-sm" %>
+      </div>
+      <div class="col-md-2">
+        <%= text_field_tag :city, params[:city], placeholder: "city", class: "form-control input-sm" %>
+      </div>
+      <div class="col-md-2">
+        <%= text_field_tag :address, params[:address], placeholder: "address", class: "form-control input-sm" %>
+      </div>
+      <div class="col-md-2">
+
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-5">      </div>
+      <div class="col-md-2">
+        <%= submit_tag "Search", name: nil, class: "btn btn-primary" %>
+      </div>
+      <div class="col-md-5">      </div>
+    </div>
+
+  <% end %>
+</div>
